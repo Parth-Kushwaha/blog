@@ -5,4 +5,4 @@ from django.contrib.auth.forms import UserCreationForm
 
 def register(request):
     form= UserCreationForm()
-    
+    return render(request, 'users/registeration.html',{'form':form})
