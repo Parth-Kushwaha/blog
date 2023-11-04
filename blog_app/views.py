@@ -20,6 +20,7 @@ class PostListView(ListView):
 
 class PostDetailView(DetailView):
     model= Post
+    context_object_name= 'post'
 
 
 def about(request):
