@@ -10,5 +10,12 @@
             <h2  class="article-title">{{ post.title }}</h2>
             <p class="article-content">{{ post.content }}</p>
             </div>
+            
         </article>
+        {% if post.author == user %}
+            <div class="form-group">
+                <a href='{% url "post-update" post.id %}' class="btn btn-outline-info" >Update</a>
+                <a href='{% url "post-delete" post.id %}' class="btn btn-outline-danger" >Delete</a>
+            </div>
+        {% endif %}
 {% endblock content %}
