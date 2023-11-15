@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.models import User
 from .models import Post
 
 # Create your views here.
@@ -13,6 +13,12 @@ def home(request):
         'posts': posts
     }
     return render(request, 'blog_app/home.html',context)
+
+def about(request):
+    context={
+        'title':'About'
+    }
+    return render(request, 'blog_app/about.html', context)
 
 class PostListView(ListView):
     model= Post
@@ -68,10 +74,3 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin ,DeleteView):
         if self.request.user==post.author:
             return True
         return False
-
-
-def about(request):
-    context={
-        'title':'About'
-    }
-    return render(request, 'blog_app/about.html', context)
